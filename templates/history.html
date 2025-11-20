@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>歷史優惠券紀錄</title>
+  <!-- 共用首頁樣式（含 header） -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  <!-- 歷史頁專用樣式 -->
+  <link rel="stylesheet" href="{% static 'css/history.css' %}" />
+</head>
+<body>
+  <!-- Header：跟首頁一樣 -->
+  <header>
+    <nav class="navbar">
+      <ul>
+        <li><a href="/index/">首頁</a></li>
+        <li><a href="{% url 'history' %}">歷史</a></li>
+        <li><a href="/">登出</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="history-wrap">
+    <!-- 上方大膠囊：顧客分群 -->
+    <section class="activity-bar">
+      <div class="activity-select-chip">
+        <div class="activity-select-label" id="segmentTitleTop">
+          忠誠顧客
+        </div>
+        <div class="activity-select-wrap">
+          <select id="segmentSelect" aria-label="選擇顧客分群">
+            <option value="loyal">忠誠顧客</option>
+            <option value="potential_vip">潛在高價值顧客</option>
+            <option value="regular">普通顧客</option>
+            <option value="low_value">低價值顧客</option>
+            <option value="sleeping">沉睡顧客</option>
+            <option value="churn_risk">潛在流失顧客</option>
+            <option value="new">新客</option>
+          </select>
+          <span class="activity-arrow">▼</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 優惠券列表 -->
+    <section id="couponList" class="coupon-list">
+      <!-- 內容由 history.js 動態產生 -->
+    </section>
+  </main>
+
+  <script src="{% static 'js/history.js' %}"></script>
+</body>
+</html>
